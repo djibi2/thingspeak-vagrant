@@ -13,7 +13,17 @@ thingspeak-deps:
     - ruby-bundler
     - git
     - ruby-dev
+    - rails
 
+install_minitest:
+  gem.installed:
+    - name: minitest
+    - version: '4.7.5'
+
+install_json:
+  gem.installed:
+    - name: json
+    - version: 1.8.1
 
 https://github.com/iobridge/thingspeak.git:
   git.latest:
@@ -26,5 +36,9 @@ thinkspeak-install:
   cmd.script:
     - source: salt://install_thingspeak.sh
     - cwd: /home/vagrant/repos/thingspeak
+    - user: vagrant
+    - loglevel: debug
     - require:
       - 'https://github.com/iobridge/thingspeak.git'
+      - install_minitest
+      - install_json
