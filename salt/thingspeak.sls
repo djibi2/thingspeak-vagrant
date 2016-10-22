@@ -29,6 +29,7 @@ https://github.com/iobridge/thingspeak.git:
   git.latest:
     - target: /home/vagrant/repos/thingspeak
     - user: vagrant
+    - force_reset: True
     - require:
       - thingspeak-deps
 
